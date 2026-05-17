@@ -1,11 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject creditsPanel;
     public GameObject settingsPanel;
+
+    [Header("Skin")]
+    [SerializeField] private TMP_Text skinNameText;
+    [SerializeField] private Button nextSkinButton;
+    [SerializeField] private Button previousSkinButton;
+
+    private const string SKIN_NAME_TEXT = "Text_SkinName";
+    private const string NEXT_SKIN_BUTTON_TEXT = "Button_NextSkin";
+    private const string PREVIOUS_SKIN_BUTTON_TEXT = "Button_PreviousSkin";
 
     private void Start()
     {
@@ -14,6 +25,10 @@ public class MainMenuManager : MonoBehaviour
 
         ResolvePanels();
         RemoveLegacyAutoLabels();
+        ResolveSkinText();
+        ResolveSkinButtons();
+        RegisterSkinButtonEvents();
+        RefreshSkinText();
 
         if (creditsPanel != null)
             creditsPanel.SetActive(false);
@@ -70,6 +85,18 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void NextSkin()
+    {
+        PlayerSkin.SelectNextSkin();
+        RefreshSkinText();
+    }
+
+    public void PreviousSkin()
+    {
+        PlayerSkin.SelectPreviousSkin();
+        RefreshSkinText();
+    }
+
     private void ResolvePanels()
     {
         if (creditsPanel == null)
@@ -83,6 +110,60 @@ public class MainMenuManager : MonoBehaviour
             GameObject settings = GameObject.Find("Panel_Settings");
             if (settings != null) { settingsPanel = settings; }
         }
+    }
+
+    private void ResolveSkinText()
+    {
+        if (skinNameText != null) { return; }
+
+        GameObject skinTextObject = GameObject.Find(SKIN_NAME_TEXT);
+        if (skinTextObject != null)
+        {
+            skinNameText = skinTextObject.GetComponent<TMP_Text>();
+        }
+    }
+
+    private void ResolveSkinButtons()
+    {
+        if (nextSkinButton == null)
+        {
+            GameObject nextButtonObject = GameObject.Find(NEXT_SKIN_BUTTON_TEXT);
+            if (nextButtonObject != null)
+            {
+                nextSkinButton = nextButtonObject.GetComponent<Button>();
+            }
+        }
+
+        if (previousSkinButton == null)
+        {
+            GameObject previousButtonObject = GameObject.Find(PREVIOUS_SKIN_BUTTON_TEXT);
+            if (previousButtonObject != null)
+            {
+                previousSkinButton = previousButtonObject.GetComponent<Button>();
+            }
+        }
+    }
+
+    private void RegisterSkinButtonEvents()
+    {
+        if (nextSkinButton != null)
+        {
+            nextSkinButton.onClick.RemoveListener(NextSkin);
+            nextSkinButton.onClick.AddListener(NextSkin);
+        }
+
+        if (previousSkinButton != null)
+        {
+            previousSkinButton.onClick.RemoveListener(PreviousSkin);
+            previousSkinButton.onClick.AddListener(PreviousSkin);
+        }
+    }
+
+    private void RefreshSkinText()
+    {
+        if (skinNameText == null) { return; }
+
+        skinNameText.text = PlayerSkin.GetSelectedSkinName();
     }
 
     private void RemoveLegacyAutoLabels()
