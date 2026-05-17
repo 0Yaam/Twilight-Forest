@@ -68,6 +68,7 @@ MonoBehaviour:
   enemyHitClip: {fileID: 8300000, guid: 7a9883c831b38794d8ca2202f5d55ab4, type: 3}
   playerHitClip: {fileID: 8300000, guid: 94a9088f09bc0884d891ce8c4bf0589a, type: 3}
   sceneTransitionClip: {fileID: 8300000, guid: ca7ba2752365bea4899032a1df22d2e1, type: 3}
+  gameOverClip: {fileID: 8300000, guid: 1650037f213e9324ea6fdaedb9880038, type: 3}
   sfxVolume: 0.8
 --- !u!1 &2708161744188987343
 GameObject:

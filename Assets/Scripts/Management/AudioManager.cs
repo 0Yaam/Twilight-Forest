@@ -14,6 +14,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioClip enemyHitClip;
     [SerializeField] private AudioClip playerHitClip;
     [SerializeField] private AudioClip sceneTransitionClip;
+    [SerializeField] private AudioClip gameOverClip;
     [SerializeField][Range(0f, 1f)] private float sfxVolume = 0.8f;
 
     protected override void Awake()
@@ -40,6 +41,19 @@ public class AudioManager : Singleton<AudioManager>
     public void PlaySceneTransition()
     {
         PlaySFX(sceneTransitionClip);
+    }
+
+    public void PlayGameOver()
+    {
+        StopBackgroundMusic();
+        PlaySFX(gameOverClip);
+    }
+
+    public void StopBackgroundMusic()
+    {
+        if (musicSource == null) { return; }
+
+        musicSource.Stop();
     }
 
     private void ResolveAudioSources()

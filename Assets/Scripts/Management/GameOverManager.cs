@@ -16,6 +16,8 @@ public class GameOverManager : Singleton<GameOverManager>
     private const string RESTART_BUTTON_TEXT = "Button_Restart";
     private const string MAIN_MENU_BUTTON_TEXT = "Button_MainMenu";
 
+    public bool IsGameOverActive { get { return gameOverActive; } }
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -41,6 +43,11 @@ public class GameOverManager : Singleton<GameOverManager>
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayGameOver();
         }
 
         if (PlayerController.Instance != null)
@@ -92,6 +99,7 @@ public class GameOverManager : Singleton<GameOverManager>
         AddObjectToDestroy(objectsToDestroy, SceneManagement.Instance);
         AddObjectToDestroy(objectsToDestroy, CameraController.Instance);
         AddObjectToDestroy(objectsToDestroy, EconomyManager.Instance);
+        AddObjectToDestroy(objectsToDestroy, AudioManager.Instance);
         AddObjectToDestroy(objectsToDestroy, Instance);
 
         foreach (GameObject objectToDestroy in objectsToDestroy)
