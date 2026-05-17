@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,6 +19,7 @@ public class GameOverManager : Singleton<GameOverManager>
     private void Start()
     {
         Time.timeScale = 1f;
+        EnsureEventSystem();
         ResolveButtons();
         RegisterButtonEvents();
 
@@ -31,6 +34,9 @@ public class GameOverManager : Singleton<GameOverManager>
         if (gameOverActive) { return; }
 
         gameOverActive = true;
+        EnsureEventSystem();
+        ResolveButtons();
+        RegisterButtonEvents();
 
         if (gameOverPanel != null)
         {
@@ -135,6 +141,15 @@ public class GameOverManager : Singleton<GameOverManager>
             mainMenuButton.onClick.RemoveListener(QuitToMainMenu);
             mainMenuButton.onClick.AddListener(QuitToMainMenu);
         }
+    }
+
+    private void EnsureEventSystem()
+    {
+        if (EventSystem.current != null) { return; }
+
+        GameObject eventSystemObject = new GameObject("EventSystem");
+        eventSystemObject.AddComponent<EventSystem>();
+        eventSystemObject.AddComponent<InputSystemUIInputModule>();
     }
 
     private void AddObjectToDestroy<T>(HashSet<GameObject> objectsToDestroy, Singleton<T> singleton) where T : Singleton<T>

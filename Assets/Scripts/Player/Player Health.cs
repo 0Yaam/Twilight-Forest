@@ -68,6 +68,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
         if (isDead) { return; }
         if (!canTakeDamage) { return; }
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlayerHit();
+        }
+
         if (ScreenShakeManager.Instance != null)
         {
             ScreenShakeManager.Instance.ShakeScreen();

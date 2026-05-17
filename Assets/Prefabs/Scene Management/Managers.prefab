@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 817133671660237065}
   - component: {fileID: 8007382962275987959}
+  - component: {fileID: -7393878308656728397}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -48,6 +49,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1acb8d63fb8dde449536a52ea745ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseSingleton
+--- !u!114 &-7393878308656728397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686648692989686582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a4e2f2176f47f48b351b4bfe64c2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 6ad3a9fbad4d96b4d9165c0c0e774a38, type: 3}
+  musicVolume: 0.25
+  enemyHitClip: {fileID: 8300000, guid: 7a9883c831b38794d8ca2202f5d55ab4, type: 3}
+  playerHitClip: {fileID: 8300000, guid: 94a9088f09bc0884d891ce8c4bf0589a, type: 3}
+  sceneTransitionClip: {fileID: 8300000, guid: ca7ba2752365bea4899032a1df22d2e1, type: 3}
+  sfxVolume: 0.8
 --- !u!1 &2708161744188987343
 GameObject:
   m_ObjectHideFlags: 0

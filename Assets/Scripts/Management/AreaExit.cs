@@ -38,6 +38,10 @@ public class AreaExit : MonoBehaviour
         }
 
         isTransitioning = true;
+        if (AudioManager.Instance != null) {
+            AudioManager.Instance.PlaySceneTransition();
+        }
+
         if (SceneManagement.Instance != null) {
             SceneManagement.Instance.SetTransitionName(sceneTransitionName);
         }
