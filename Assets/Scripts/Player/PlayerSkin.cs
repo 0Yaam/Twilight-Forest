@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(1000)]
 public class PlayerSkin : MonoBehaviour
 {
     private const string PLAYER_SKIN_PREF_KEY = "PlayerSkinIndex";
@@ -24,11 +25,16 @@ public class PlayerSkin : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        ResolveSpriteRenderer();
         ApplySavedSkin();
     }
 
     private void OnEnable()
+    {
+        ApplySavedSkin();
+    }
+
+    private void LateUpdate()
     {
         ApplySavedSkin();
     }
@@ -38,9 +44,16 @@ public class PlayerSkin : MonoBehaviour
     {
         PlayerController player = FindAnyObjectByType<PlayerController>();
         if (player == null) { return; }
-        if (player.GetComponent<PlayerSkin>() != null) { return; }
 
-        player.gameObject.AddComponent<PlayerSkin>();
+        EnsureForPlayer(player.gameObject);
+    }
+
+    public static void EnsureForPlayer(GameObject playerObject)
+    {
+        if (playerObject == null) { return; }
+        if (playerObject.GetComponent<PlayerSkin>() != null) { return; }
+
+        playerObject.AddComponent<PlayerSkin>();
     }
 
     public static void SelectNextSkin()
@@ -60,14 +73,17 @@ public class PlayerSkin : MonoBehaviour
 
     public void ApplySavedSkin()
     {
-        if (spriteRenderer == null)
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-
+        ResolveSpriteRenderer();
         if (spriteRenderer == null) { return; }
 
         spriteRenderer.color = SkinColors[GetSkinIndex()];
+    }
+
+    private void ResolveSpriteRenderer()
+    {
+        if (spriteRenderer != null) { return; }
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private static int GetSkinIndex()

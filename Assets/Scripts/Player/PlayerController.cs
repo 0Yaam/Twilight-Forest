@@ -38,6 +38,7 @@ public class PlayerController : Singleton<PlayerController>
         playerControls.Combat.Dash.performed += OnDashPerformed;
 
         startingMoveSpeed = moveSpeed;
+        PlayerSkin.EnsureForPlayer(gameObject);
     }
 
     private void OnEnable() {
