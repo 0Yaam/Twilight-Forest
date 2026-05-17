@@ -4,11 +4,23 @@ using UnityEngine;
 public class CameraController : Singleton<CameraController>
 {
     private CinemachineVirtualCamera cinemachineVirtualCamera;
-
-   public void SetPlayerCameraFollow()
+    private void Start()
     {
-        cinemachineVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-        cinemachineVirtualCamera.Follow = PlayerController.Instance.transform;
+        SetPlayerCameraFollow();
+    }
 
+    public void SetPlayerCameraFollow()
+    {
+        if (cinemachineVirtualCamera == null)
+        {
+            cinemachineVirtualCamera = FindAnyObjectByType<CinemachineVirtualCamera>();
+        }
+
+        if (cinemachineVirtualCamera == null || PlayerController.Instance == null)
+        {
+            return;
+        }
+
+        cinemachineVirtualCamera.Follow = PlayerController.Instance.transform;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ActiveInventory : MonoBehaviour
 {
@@ -12,13 +13,28 @@ public class ActiveInventory : MonoBehaviour
 
     private void Start()
     {
-        playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
+        playerControls.Inventory.Keyboard.performed += OnInventoryKeyboardPerformed;
         ToggleActiveHighlight(0);
     }
 
     private void OnEnable()
     {
         playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (playerControls != null)
+        {
+            playerControls.Disable();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (playerControls == null) { return; }
+        playerControls.Inventory.Keyboard.performed -= OnInventoryKeyboardPerformed;
+        playerControls.Dispose();
     }
 
     private void ToggleActiveSlot(int numValue)
@@ -54,5 +70,10 @@ public class ActiveInventory : MonoBehaviour
         newWeapon.transform.parent = ActiveWeapon.Instance.transform;
         
         ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());
+    }
+
+    private void OnInventoryKeyboardPerformed(InputAction.CallbackContext context)
+    {
+        ToggleActiveSlot((int)context.ReadValue<float>());
     }
 }

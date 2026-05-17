@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6364424243276611762}
   - component: {fileID: 5917536112123430698}
   - component: {fileID: 5194864235770434908}
+  - component: {fileID: -4303358989687668875}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -143,3 +144,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Destructible
   destroyVFX: {fileID: 7734383876366790221, guid: 6d5a4fa8bf0eeaa4b80584a94de984fe, type: 3}
+--- !u!114 &-4303358989687668875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634425740830305437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c4abed2ea4faf419995dad9ea6dd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpSpawner
+  goldCoin: {fileID: 7039862860242245744, guid: fea6ed2ab95c98b45867a79334a729de, type: 3}
+  healthGlobe: {fileID: 7039862860242245744, guid: 7c6faec30b815d74990548f90124d991, type: 3}
+  staminaGlobe: {fileID: 7039862860242245744, guid: 3bf7d8d75dbd07d43a056448f329d354, type: 3}
