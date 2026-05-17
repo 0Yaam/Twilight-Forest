@@ -18,6 +18,7 @@ public class PlayerController : Singleton<PlayerController>
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;
+    private Knockback knockback;
     private float startingMoveSpeed;
 
     private bool facingLeft = false;
@@ -30,16 +31,32 @@ public class PlayerController : Singleton<PlayerController>
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
+        knockback = GetComponent<Knockback>();
     }
 
     private void Start() {
-        playerControls.Combat.Dash.performed += _ => Dash();
+        playerControls.Combat.Dash.performed += OnDashPerformed;
 
         startingMoveSpeed = moveSpeed;
     }
 
     private void OnEnable() {
         playerControls.Enable();
+    }
+
+    private void OnDisable() {
+        if (playerControls != null) {
+            playerControls.Disable();
+        }
+    }
+
+    protected override void OnDestroy() {
+        base.OnDestroy();
+
+        if (playerControls != null) {
+            playerControls.Combat.Dash.performed -= OnDashPerformed;
+            playerControls.Dispose();
+        }
     }
 
     private void Update() {
@@ -62,6 +79,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Move() {
+        if (knockback.GettingKnockedBack) { return; }
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
     }
 
@@ -83,12 +101,16 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Dash() {
-        if (!isDashing) {
-            isDashing = true;
-            moveSpeed *= dashSpeed;
-            myTrailRenderer.emitting = true;
-            StartCoroutine(EndDashRoutine());
-        }
+        if (isDashing) { return; }
+
+        Stamina stamina = Stamina.Instance;
+        if (stamina == null || stamina.CurrentStamina <= 0) { return; }
+
+        stamina.UseStamina();
+        isDashing = true;
+        moveSpeed *= dashSpeed;
+        myTrailRenderer.emitting = true;
+        StartCoroutine(EndDashRoutine());
     }
 
     private IEnumerator EndDashRoutine() {
@@ -99,5 +121,9 @@ public class PlayerController : Singleton<PlayerController>
         myTrailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
         isDashing = false;
+    }
+
+    private void OnDashPerformed(InputAction.CallbackContext context) {
+        Dash();
     }
 }

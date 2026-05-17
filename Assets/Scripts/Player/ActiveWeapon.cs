@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ActiveWeapon : Singleton<ActiveWeapon>
 {
@@ -19,11 +20,29 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     {
         playerControls.Enable();
     }
+    private void OnDisable()
+    {
+        if (playerControls != null)
+        {
+            playerControls.Disable();
+        }
+    }
     private void Start()
     {
-        playerControls.Combat.Attack.started += _ =>StartAttacking();
-        playerControls.Combat.Attack.canceled += _ =>StopAttacking();
+        playerControls.Combat.Attack.started += OnAttackStarted;
+        playerControls.Combat.Attack.canceled += OnAttackCanceled;
         AttackCooldown();
+    }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        if (playerControls != null)
+        {
+            playerControls.Combat.Attack.started -= OnAttackStarted;
+            playerControls.Combat.Attack.canceled -= OnAttackCanceled;
+            playerControls.Dispose();
+        }
     }
     private void Update()
     {
@@ -57,6 +76,16 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     private void StopAttacking()
     {
         attackButtonDown = false;
+    }
+
+    private void OnAttackStarted(InputAction.CallbackContext context)
+    {
+        StartAttacking();
+    }
+
+    private void OnAttackCanceled(InputAction.CallbackContext context)
+    {
+        StopAttacking();
     }
 
     private void Attack()
