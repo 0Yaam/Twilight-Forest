@@ -1,39 +1,38 @@
 # Twilight Forest
 
-Twilight Forest là game 2D phiêu lưu - hành động được xây dựng bằng Unity. Người chơi điều khiển nhân vật khám phá màn chơi, chiến đấu với kẻ địch, hoàn thành nhiệm vụ để mở cổng và chuyển sang khu vực tiếp theo.
+Twilight Forest là game 2D phiêu lưu - hành động được xây dựng bằng Unity. Người chơi điều khiển nhân vật khám phá màn chơi, chiến đấu với kẻ địch, hoàn thành nhiệm vụ để mở cổng và chuyển sang màn tiếp theo.
 
 Game tập trung vào vòng lặp gameplay cơ bản: di chuyển, tấn công, thu thập vật phẩm, quản lý máu/stamina, hoàn thành nhiệm vụ, Game Over và chơi lại.
 
-## Screenshot / Gameplay
+## Gameplay
 
-> Chưa đính kèm ảnh trong repository. Khi nộp bài, có thể chụp 2-3 ảnh màn hình gameplay và đặt vào thư mục `Docs/Images/`.
+### Main Menu
 
-Gợi ý ảnh nên chụp:
-
-1. `Docs/Images/main-menu.png` - màn hình menu chính, có phần chọn skin.
-2. `Docs/Images/gameplay.png` - nhân vật đang chiến đấu với quái.
-3. `Docs/Images/objective-portal.png` - UI nhiệm vụ và portal mở sau khi hoàn thành.
-4. `Docs/Images/game-over.png` - màn hình Game Over.
-
-Sau khi có ảnh, thêm vào README theo mẫu:
-
-```md
 ![Main Menu](Docs/Images/main-menu.png)
+
+### Gameplay
+
 ![Gameplay](Docs/Images/gameplay.png)
+
+### Objective & Portal
+
+![Objective Portal](Docs/Images/objective-portal.png)
+
+### Game Over
+
 ![Game Over](Docs/Images/game-over.png)
-```
 
 ## Tính Năng Chính
 
 - Di chuyển nhân vật 4 hướng bằng bàn phím.
 - Tấn công kẻ địch và xử lý hiệu ứng khi enemy bị đánh.
-- Hệ thống máu, stamina và cảnh báo máu thấp.
 - Nhặt vật phẩm như vàng, hồi máu và hồi stamina.
-- Nhiệm vụ mở cổng: người chơi cần hoàn thành mục tiêu trước khi chuyển màn.
+- Hệ thống nhiệm vụ mở cổng: người chơi cần hoàn thành mục tiêu trước khi chuyển màn.
 - Hiển thị tiến độ nhiệm vụ trên giao diện.
-- Pause Menu: tiếp tục chơi hoặc quay về menu chính.
+- Pause Menu: tạm dừng, tiếp tục chơi hoặc quay về menu chính.
 - Game Over: chơi lại màn hiện tại hoặc quay về menu chính.
-- Âm thanh: nhạc nền, âm thanh đánh quái, nhận sát thương, chuyển màn và Game Over.
+- Âm thanh: nhạc nền, đánh quái, nhận sát thương, chuyển màn và Game Over.
+- Cảnh báo máu thấp khi nhân vật sắp chết.
 - Chọn skin nhân vật và lưu lựa chọn bằng `PlayerPrefs`.
 
 ## Công Nghệ Sử Dụng
@@ -41,7 +40,7 @@ Sau khi có ảnh, thêm vào README theo mẫu:
 - Unity `6000.3.10f1`
 - C#
 - Unity 2D
-- Rigidbody2D và Collider2D
+- Rigidbody2D / Collider2D
 - Unity New Input System
 - TextMeshPro
 - Unity UI Canvas
@@ -49,7 +48,7 @@ Sau khi có ảnh, thêm vào README theo mẫu:
 
 ## Hướng Dẫn Cài Đặt Và Chạy
 
-### Cách 1: Chạy bằng Unity Editor
+### Chạy bằng Unity Editor
 
 1. Clone repository:
 
@@ -60,69 +59,53 @@ Sau khi có ảnh, thêm vào README theo mẫu:
 2. Mở Unity Hub.
 3. Chọn **Add project from disk**.
 4. Chọn thư mục project vừa clone.
-5. Mở project bằng Unity `6000.3.10f1` hoặc phiên bản Unity 6 tương thích.
+5. Mở project bằng Unity `6000.3.10f1`.
 6. Mở scene:
 
    ```text
    Assets/Scenes/MainMenu.unity
    ```
 
-7. Bấm **Play** trong Unity Editor để chạy game.
+7. Bấm **Play** để chạy game trong Unity Editor.
 
-### Cách 2: Chạy bản build có sẵn
+### Chạy bản build
 
-Nếu repository có thư mục `Builds/`, có thể chạy trực tiếp bản build:
+Nếu repository có thư mục `Builds/`, có thể chạy trực tiếp:
 
-- Windows:
-
-  ```text
-  Builds/window/Twilight-Forest.exe
-  ```
-
-- macOS:
-
-  ```text
-  Builds/macos/macos.app
-  ```
-
-Lưu ý: Trên macOS, nếu bị chặn do ứng dụng tải từ Internet, vào **System Settings > Privacy & Security** để cho phép mở ứng dụng.
+```text
+Builds/window/Twilight-Forest.exe
+Builds/macos/macos.app
+```
 
 ## Điều Khiển Cơ Bản
 
 | Phím / Thao tác | Chức năng |
 |---|---|
-| `W A S D` hoặc phím di chuyển | Di chuyển nhân vật |
+| `W A S D` hoặc phím điều hướng | Di chuyển nhân vật |
 | Chuột trái / phím tấn công đã cấu hình | Tấn công |
 | `Esc` | Mở / đóng Pause Menu |
-| Nút UI | Chọn skin, Play, Resume, Restart hoặc Main Menu |
+| Nút UI | Play, chọn skin, Resume, Restart hoặc quay về Main Menu |
 
-## Thành Viên Và Phân Công
+## Thành Viên
 
-| Thành viên | Phân công |
+| MSSV | Họ tên |
 |---|---|
-| Thành viên 1 | Lập trình gameplay, di chuyển, chiến đấu, nhiệm vụ mở cổng |
-| Thành viên 2 | Thiết kế UI, Main Menu, Pause Menu, Game Over |
-| Thành viên 3 | Âm thanh, kiểm thử, build game và viết báo cáo |
+| 2312616 | Phan Trung Hiếu |
+| 2312590 | Nguyễn Ngọc Trường Dân |
+| 2312756 | Nguyễn Hưng Thịnh |
 
-> Cập nhật lại tên thành viên thật trước khi nộp bài.
+## Phân Công
+
+| Công việc | Mô tả |
+|---|---|
+| Gameplay | Di chuyển nhân vật, chiến đấu, enemy, vật phẩm |
+| UI / Scene | Main Menu, Pause Menu, Game Over, chuyển scene |
+| Mở rộng tính năng | Nhiệm vụ mở cổng, âm thanh, cảnh báo máu thấp, chọn skin |
+| Báo cáo / Kiểm thử | Viết báo cáo, kiểm tra chức năng, build game |
 
 ## Yêu Cầu Hệ Thống
 
-### Khi chạy bằng Unity Editor
+- Unity `6000.3.10f1` nếu chạy bằng Unity Editor.
+- Hệ điều hành Windows hoặc macOS.
+- Git để clone repository.
 
-- Hệ điều hành: Windows 10/11 hoặc macOS phiên bản Unity hỗ trợ.
-- Unity: `6000.3.10f1` hoặc Unity 6 tương thích.
-- RAM khuyến nghị: 8 GB trở lên.
-- Dung lượng trống: tối thiểu 2 GB.
-- Git để clone project.
-
-### Khi chạy bản build
-
-- Windows 10/11 64-bit hoặc macOS.
-- RAM khuyến nghị: 4 GB trở lên.
-- GPU hỗ trợ đồ họa 2D cơ bản.
-- Dung lượng trống: tối thiểu 500 MB.
-
-## Ghi Chú
-
-Project hiện được thiết kế theo hướng single-player. Một số hệ thống như Player, Camera, UI và Enemy AI đang phục vụ cho một người chơi, chưa hỗ trợ multiplayer online.
