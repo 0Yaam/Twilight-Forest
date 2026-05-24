@@ -1,22 +1,24 @@
 # Unity generated folders
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
-[Mm]emoryCaptures/
-[Rr]ecordings/
-[Ee]xportedObj/
-[Cc]rashReports/
-[Bb]ackup*/
-[Bb]ackup*/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/[Ee]xportedObj/
+/[Cc]rashReports/
+/[Bb]ackup*/
 
-# Asset meta data created by Unity
-!/[Aa]ssets/**/*.meta
-!/[Pp]ackages/**/*.meta
-!/[Pp]roject[Ss]ettings/**/*.meta
+# Keep Unity build outputs for this submission.
+# Do not ignore Builds/ or *.app, because macOS builds are .app bundles.
+# /[Bb]uild/
+# /[Bb]uilds/
 
-# Visual Studio / Rider / VS Code
+# Unity generated asset store tools
+/[Aa]ssets/[Aa]ssetStoreTools*/
+
+# Visual Studio / Rider / VS Code generated files
 .vs/
 .idea/
 .consulo/
@@ -36,20 +38,17 @@
 *.mdb
 *.opendb
 *.VC.db
+
+# Generated debug symbols
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
 
-# Unity / IDE generated
+# Unity packages / build exports not needed in source control
 *.apk
 *.aab
-*.app
 *.unitypackage
 *.stacktrace
-/[Aa]ssets/[Aa]ssetStoreTools*
-
-# Unity auto-generated files
-Assets/AssetStoreTools*
 
 # Crash reports
 sysinfo.txt
