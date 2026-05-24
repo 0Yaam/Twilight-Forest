@@ -70,8 +70,6 @@ Game tập trung vào vòng lặp gameplay cơ bản: di chuyển, tấn công, 
 
 ### Chạy bản build
 
-Nếu repository có thư mục `Builds/`, có thể chạy trực tiếp:
-
 ```text
 Builds/window/Twilight-Forest.exe
 Builds/macos/macos.app
@@ -103,9 +101,5 @@ Builds/macos/macos.app
 | Mở rộng tính năng | Nhiệm vụ mở cổng, âm thanh, cảnh báo máu thấp, chọn skin |
 | Báo cáo / Kiểm thử | Viết báo cáo, kiểm tra chức năng, build game |
 
-## Yêu Cầu Hệ Thống
 
-- Unity `6000.3.10f1` nếu chạy bằng Unity Editor.
-- Hệ điều hành Windows hoặc macOS.
-- Git để clone repository.
 
