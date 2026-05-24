@@ -1,6 +1,6 @@
 # Twilight Forest
 
-Twilight Forest là game 2D phiêu lưu - hành động được xây dựng bằng Unity. Người chơi điều khiển nhân vật khám phá màn chơi, chiến đấu với kẻ địch, hoàn thành nhiệm vụ để mở cổng và chuyển sang màn tiếp theo.
+Twilight Forest là game 2D phiêu lưu RPG - hành động được xây dựng bằng Unity. Người chơi điều khiển nhân vật khám phá màn chơi, chiến đấu với kẻ địch, hoàn thành nhiệm vụ để mở cổng và chuyển sang màn tiếp theo.
 
 Game tập trung vào vòng lặp gameplay cơ bản: di chuyển, tấn công, thu thập vật phẩm, quản lý máu/stamina, hoàn thành nhiệm vụ, Game Over và chơi lại.
 
@@ -102,6 +102,6 @@ Builds/macos/macos.app
 | Báo cáo / Kiểm thử | Viết báo cáo, kiểm tra chức năng, build game |
 
 ## Video Demo
-https://youtu.be/V7Omq_vmti8
+https://youtu.be/V7Omq_vmti8<br>
 https://drive.google.com/file/d/1ARInseW_-7nI5rH4v1inXroOgSqaZ-YB/view?usp=sharing
 
