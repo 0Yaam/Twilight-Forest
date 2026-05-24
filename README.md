@@ -101,5 +101,7 @@ Builds/macos/macos.app
 | Mở rộng tính năng | Nhiệm vụ mở cổng, âm thanh, cảnh báo máu thấp, chọn skin |
 | Báo cáo / Kiểm thử | Viết báo cáo, kiểm tra chức năng, build game |
 
-
+## Video Demo
+https://youtu.be/V7Omq_vmti8
+https://drive.google.com/file/d/1ARInseW_-7nI5rH4v1inXroOgSqaZ-YB/view?usp=sharing
 
