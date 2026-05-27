@@ -94,12 +94,21 @@ Builds/macos/macos.app
 
 ## Phân Công
 
-| Công việc | Mô tả |
-|---|---|
-| Gameplay | Di chuyển nhân vật, chiến đấu, enemy, vật phẩm |
-| UI / Scene | Main Menu, Pause Menu, Game Over, chuyển scene |
-| Mở rộng tính năng | Nhiệm vụ mở cổng, âm thanh, cảnh báo máu thấp, chọn skin |
-| Báo cáo / Kiểm thử | Viết báo cáo, kiểm tra chức năng, build game |
+### 5.2. Chi tiết công việc từng thành viên
+
+- **Nguyễn Ngọc Trường Dân — Vai trò: Developer**
+   - Công việc 1: Xây dựng màn hình Game Over — hiển thị khi nhân vật hết máu, tích hợp nút chơi lại và về menu.
+   - Công việc 2: Tích hợp hệ thống âm thanh — nhạc nền, âm thanh khi nhận sát thương, chuyển màn và Game Over.
+   - Công việc 3: Xây dựng hệ thống nhiệm vụ — điều kiện tiêu diệt đủ quái hoặc thu thập vật phẩm để mở cổng dịch chuyển.
+
+- **Phan Trung Hiếu — Vai trò: Developer**
+   - Công việc 1: Xây dựng màn hình Menu chính — bắt đầu game, chọn skin, xem thông tin nhóm và thoát game.
+   - Công việc 2: Xây dựng hệ thống chọn skin nhân vật — 4 màu Default/Blue/Red/Purple, lưu bằng `PlayerPrefs` và tự áp dụng khi vào game.
+
+- **Nguyễn Hưng Thịnh — Vai trò: Developer**
+   - Công việc 1: Xây dựng chức năng Pause/Tạm dừng — cho phép tạm dừng, tiếp tục hoặc quay về menu chính.
+   - Công việc 2: Hiển thị mục tiêu nhiệm vụ trên giao diện HUD — số lượng quái cần tiêu diệt hoặc vật phẩm cần thu thập.
+   - Công việc 3: Cảnh báo máu thấp — thanh máu nhấp nháy khi HP còn 1 để cảnh báo người chơi sắp chết.
 
 ## Video Demo
 https://youtu.be/V7Omq_vmti8<br>
